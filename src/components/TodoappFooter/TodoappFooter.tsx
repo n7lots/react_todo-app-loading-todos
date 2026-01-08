@@ -27,9 +27,11 @@ export const TodoappFooter: React.FC<Props> = ({
       <nav className="filter" data-cy="Filter">
         <a
           href="#/"
-          className={cl('filter__link', { selected: selectedFilter === 'all' })}
+          className={cl('filter__link', {
+            selected: selectedFilter === Filter.All,
+          })}
           data-cy="FilterLinkAll"
-          onClick={() => onFilterChange('all')}
+          onClick={() => onFilterChange(Filter.All)}
         >
           All
         </a>
@@ -37,10 +39,10 @@ export const TodoappFooter: React.FC<Props> = ({
         <a
           href="#/active"
           className={cl('filter__link', {
-            selected: selectedFilter === 'active',
+            selected: selectedFilter === Filter.Active,
           })}
           data-cy="FilterLinkActive"
-          onClick={() => onFilterChange('active')}
+          onClick={() => onFilterChange(Filter.Active)}
         >
           Active
         </a>
@@ -48,16 +50,15 @@ export const TodoappFooter: React.FC<Props> = ({
         <a
           href="#/completed"
           className={cl('filter__link', {
-            selected: selectedFilter === 'completed',
+            selected: selectedFilter === Filter.Completed,
           })}
           data-cy="FilterLinkCompleted"
-          onClick={() => onFilterChange('completed')}
+          onClick={() => onFilterChange(Filter.Completed)}
         >
           Completed
         </a>
       </nav>
 
-      {/* this button should be disabled if there are no completed todos */}
       <button
         type="button"
         className="todoapp__clear-completed"

@@ -6,12 +6,13 @@ import { getTodos } from './api/todos';
 import { TodoList } from './components/TodoList/TodoList';
 import { TodoappErrorsBlock } from './components/TodoappErrorsBlock';
 import { TodoappFooter } from './components/TodoappFooter';
+import { ErrorMessage } from './types/ErrorMessage';
 
 export const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [inputValue, setInputValue] = useState('');
-  const [filter, setFilter] = useState<Filter>('all');
+  const [filter, setFilter] = useState<Filter>(Filter.All);
 
   useEffect(() => {
     setErrorMessage('');
@@ -19,17 +20,17 @@ export const App: React.FC = () => {
     getTodos()
       .then(setTodos)
       .catch(() => {
-        setErrorMessage('Unable to load todos');
+        setErrorMessage(ErrorMessage.LoadTodos);
         setTimeout(() => setErrorMessage(''), 3000);
       });
   }, []);
 
   const visibleTodos = [...todos].filter(todo => {
-    if (filter === 'active') {
+    if (filter === Filter.Active) {
       return !todo.completed;
     }
 
-    if (filter === 'completed') {
+    if (filter === Filter.Completed) {
       return todo.completed;
     }
 

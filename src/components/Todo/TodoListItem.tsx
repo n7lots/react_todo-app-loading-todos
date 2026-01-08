@@ -1,3 +1,5 @@
+import cl from 'classnames';
+
 type Props = {
   title: string;
   status: boolean;
@@ -10,7 +12,7 @@ export const TodoListItem: React.FC<Props> = ({ title, status }) => {
   // }
 
   return (
-    <div data-cy="Todo" className="todo">
+    <div data-cy="Todo" className={cl('todo', { completed: status })}>
       <label className="todo__status-label">
         <input
           data-cy="TodoStatus"

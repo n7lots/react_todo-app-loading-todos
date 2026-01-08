@@ -13,7 +13,7 @@ export const TodoappErrorsBlock: React.FC<Props> = ({
     <div
       data-cy="ErrorNotification"
       className={cl('notification is-danger is-light has-text-weight-normal', {
-        hidden: errorMessage === '',
+        hidden: !errorMessage,
       })}
     >
       <button
