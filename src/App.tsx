@@ -53,11 +53,11 @@ export const App: React.FC = () => {
             />
           </>
         )}
-        <TodoappErrorsBlock
-          errorMessage={errorMessage}
-          onDelete={setErrorMessage}
-        />
       </div>
+      <TodoappErrorsBlock
+        errorMessage={errorMessage}
+        onDelete={setErrorMessage}
+      />
     </div>
   );
 };
